@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TodoItem } from '../../models';;
 
 @Component({
   selector: 'app-todo-list',
@@ -8,7 +9,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class TodoListComponent implements OnInit {
 
-  items = ['Take out Trash', 'Clean Garage', 'Move Desk'];
+  items: TodoItem[] = [
+    { id: '1', name: 'Clean Garage', completed: true },
+    { id: '2', name: 'Wash Deck', completed: false },
+    { id: '3', name: 'Fix Steps', project: 'Home', completed: false, dueDate: '2020-08-23' }
+  ];
   constructor(private dialogRef: MatDialogRef<TodoListComponent>) { }
 
   ngOnInit(): void {
