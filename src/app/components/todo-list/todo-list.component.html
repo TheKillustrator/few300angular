@@ -4,6 +4,7 @@
      class="example-list"
      (cdkDropListDropped)="drop($event)">
   <div class="example-box"
+       [attr.data-id]="item.id"
        *ngFor="let item of items$ | async"
        cdkDrag>
     <div class="example-custom-placeholder"

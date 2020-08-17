@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState, selectInboxTodoList } from 'src/app/reducers';
 import { tap } from 'rxjs/operators';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import * as actions from '../../actions/todo.actions';
 
 @Component({
   selector: 'app-todo-list',
@@ -27,7 +29,15 @@ export class TodoListComponent implements OnInit {
     );
   }
 
-  drop(evt: any): void {
+  drop(evt: CdkDragDrop<any[]>): void {
+    console.log(evt);
+    if (evt.previousIndex !== evt.currentIndex) {
+      this.store.dispatch(actions.todoItemSorted({
+        id: evt.item.element.nativeElement.dataset.id,
+        previousIndex: evt.previousIndex,
+        currentIndex: evt.currentIndex
+      }));
+    }
   }
 
   done(): void {
