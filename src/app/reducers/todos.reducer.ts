@@ -21,7 +21,7 @@ const initialState: TodoState = {
   entities: {
     1: { id: '1', name: 'Change light bulbs', project: 'Home', completed: false },
     2: { id: '2', name: 'Clean garage', project: 'Home', completed: true },
-    3: { id: '3', name: 'Take car to shop', project: 'Home', completed: false }
+    3: { id: '3', name: 'Take car to shop', completed: false }
   }
 };
 
