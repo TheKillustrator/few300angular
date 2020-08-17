@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { TodoItem } from '../../models';;
+import { TodoItem } from '../../models';
 
 @Component({
   selector: 'app-todo-list',
