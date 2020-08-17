@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TodoItem } from '../../models';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState, selectInboxTodoList } from 'src/app/reducers';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,14 +13,18 @@ import { TodoItem } from '../../models';
 })
 export class TodoListComponent implements OnInit {
 
-  items: TodoItem[] = [
-    { id: '1', name: 'Clean Garage', completed: true },
-    { id: '2', name: 'Wash Deck', completed: false },
-    { id: '3', name: 'Fix Steps', project: 'Home', completed: false, dueDate: '2020-08-23' }
-  ];
-  constructor(private dialogRef: MatDialogRef<TodoListComponent>) { }
+  items$: Observable<TodoItem[]>;
+
+  constructor(
+    private dialogRef: MatDialogRef<TodoListComponent>,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
+    this.items$ = this.store.pipe(
+      select(selectInboxTodoList),
+      tap(data => console.log(data))
+    );
   }
 
   drop(evt: any): void {
