@@ -26,3 +26,8 @@ export const selectAllTodoList = createSelector(
   selectAllTodos,
   (todos) => todos as fromModels.TodoItem[]
 );
+
+export const selectInboxTodoList = createSelector(
+  selectAllTodoList,
+  (todos) => todos.filter(t => !t.project)
+);
