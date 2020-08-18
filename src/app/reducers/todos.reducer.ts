@@ -27,7 +27,8 @@ const initialState: TodoState = {
 };
 
 const reducerFunction = createReducer(
-  initialState
+  initialState,
+  on(actions.todoAdded, (state, action) => adapter.addOne(action.payload, state))
 );
 
 export function reducer(state: TodoState = initialState, action: Action): TodoState {
