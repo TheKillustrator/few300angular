@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-todo-entry',
@@ -9,7 +10,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class TodoEntryComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private bottomSheetRef: MatBottomSheetRef<TodoEntryComponent>
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -21,9 +25,12 @@ export class TodoEntryComponent implements OnInit {
 
   submit(): void {
     console.log(this.form.value);
+    // TODO dispatch an action
+    this.form.reset();
+    this.bottomSheetRef.dismiss();
   }
 
   cancel(): void {
-    // close the sheet
+    this.bottomSheetRef.dismiss();
   }
 }
