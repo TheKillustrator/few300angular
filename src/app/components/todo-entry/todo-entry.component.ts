@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-entry',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoEntryComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.maxLength(200)]],
+      project: [],
+      dueDate: []
+    });
   }
 
+  submit(): void {
+    console.log(this.form.value);
+  }
+
+  cancel(): void {
+    // close the sheet
+  }
 }
