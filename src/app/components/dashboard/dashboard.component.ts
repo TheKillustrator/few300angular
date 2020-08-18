@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { TodoEntryComponent } from '../todo-entry/todo-entry.component';
+import { DashboardProject } from 'src/app/models';
+import { AppState, selectDashboardProjects } from 'src/app/reducers';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +15,10 @@ import { TodoEntryComponent } from '../todo-entry/todo-entry.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  projects$: Observable<DashboardProject[]>;
   routeQueryParams$: Subscription;
   constructor(
+    private store: Store<AppState>,
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
@@ -22,6 +26,9 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.projects$ = this.store.pipe(
+      select(selectDashboardProjects)
+    );
     this.routeQueryParams$ = this.route.queryParams.subscribe(params => {
       if (params.inbox) {
         this.showList();

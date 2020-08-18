@@ -39,14 +39,10 @@
     <mat-card-title>Projects</mat-card-title>
     <mat-card-content>Todo Items assigned to a Project</mat-card-content>
     <mat-card-actions>
-      <button mat-button>
+      <button mat-button
+              *ngFor="let project of projects$ | async">
         <mat-chip>
-          <mat-icon>event</mat-icon> New Courses (12)
-        </mat-chip>
-      </button>
-      <button mat-button>
-        <mat-chip>
-          <mat-icon>event</mat-icon> House Work (3)
+          <mat-icon>event</mat-icon> {{ project.name }} ({{project.count}})
         </mat-chip>
       </button>
     </mat-card-actions>
