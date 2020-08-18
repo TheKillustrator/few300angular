@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<TodoListComponent>,
     private store: Store<AppState>,
-    @Inject(MAT_DIALOG_DATA) private data: { filter: string }
+    @Inject(MAT_DIALOG_DATA) public data: { filter: string }
   ) { }
 
   ngOnInit(): void {
