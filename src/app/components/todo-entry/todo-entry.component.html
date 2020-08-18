@@ -1,1 +1,14 @@
-<p>todo-entry works!</p>
+<form>
+  <div class="field-container">
+    <mat-form-field hintLabel="Max of 200 Characters"
+                    style="width: 800px !important"
+                    appearance="fill">
+      <mat-label>Enter your task</mat-label>
+      <input matInput
+             #input
+             maxlength="200"
+             placeholder="Take out the trash">
+      <mat-hint align="end">{{input.value?.length || 0}}/200</mat-hint>
+    </mat-form-field>
+  </div>
+</form>

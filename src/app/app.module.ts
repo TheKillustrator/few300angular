@@ -23,6 +23,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './reducers';
 import { TodoEntryComponent } from './components/todo-entry/todo-entry.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
