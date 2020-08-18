@@ -21,13 +21,16 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './reducers';
+import { TodoEntryComponent } from './components/todo-entry/todo-entry.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DashboardComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoEntryComponent
   ],
   imports: [
     StoreModule.forRoot(reducers),
@@ -45,7 +48,8 @@ import { reducers } from './reducers';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatBottomSheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]
