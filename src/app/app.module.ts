@@ -31,8 +31,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { TodosEffect } from './effects/todos.effects';
+import { TodoEffects } from './effects/todos.effects';
 import { LoginComponent } from './components/login/login.component';
+import { AuthEffects } from './effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { LoginComponent } from './components/login/login.component';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([TodosEffect]), // order matters here
+    EffectsModule.forRoot([TodoEffects, AuthEffects]), // effects after router connecting module
     DragDropModule,
     MatDialogModule,
     MatChipsModule,
