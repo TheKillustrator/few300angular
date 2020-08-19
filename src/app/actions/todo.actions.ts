@@ -24,7 +24,7 @@ export const loadTodos = createAction(
   '[todos] load todos'
 );
 
-export const loadTodoSucceeded = createAction(
+export const loadTodosSucceeded = createAction(
   '[todos] load todos succeeded',
   props<{ todos: TodoEntity[] }>()
 );

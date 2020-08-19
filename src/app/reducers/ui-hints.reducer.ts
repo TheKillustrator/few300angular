@@ -11,7 +11,7 @@ const initialState: UiHintsState = {
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.loadTodoSucceeded, (state, action) => {
+  on(actions.loadTodosSucceeded, (state, action) => {
     const ids = action.todos.filter(t => !t.project).map(t => t.id);
     return ({ ...state, inboxSort: ids }); // sort them in the order they come from the api
   }),

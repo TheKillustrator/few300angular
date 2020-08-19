@@ -30,6 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { TodosEffect } from './effects/todos.effects';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     StoreRouterConnectingModule.forRoot(),
+    EffectsModule.forRoot([TodosEffect]), // order matters here
     DragDropModule,
     MatDialogModule,
     MatChipsModule,

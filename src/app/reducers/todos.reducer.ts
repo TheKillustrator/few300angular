@@ -21,7 +21,7 @@ const initialState = adapter.getInitialState();
 const reducerFunction = createReducer(
   initialState,
   on(actions.todoAdded, (state, action) => adapter.addOne(action.payload, state)),
-  on(actions.loadTodoSucceeded, (state, action) => adapter.addMany(action.todos, state))
+  on(actions.loadTodosSucceeded, (state, action) => adapter.addMany(action.todos, state))
 );
 
 export function reducer(state: TodoState = initialState, action: Action): TodoState {

@@ -8,6 +8,7 @@ import { TodoEntryComponent } from '../todo-entry/todo-entry.component';
 import { DashboardProject } from 'src/app/models';
 import { AppState, selectDashboardProjects } from 'src/app/reducers';
 import { Store, select } from '@ngrx/store';
+import { loadTodos } from 'src/app/actions/todo.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +24,9 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private bottomSheet: MatBottomSheet
-  ) { }
+  ) {
+    store.dispatch(loadTodos());
+  }
 
   ngOnInit(): void {
     this.projects$ = this.store.pipe(
