@@ -20,6 +20,16 @@ export const todoAdded = createAction(
   })
 );
 
+export const todoAddedSucceeded = createAction(
+  '[todos] todo added succeeded',
+  props<{ oldId: string, payload: TodoEntity }>()
+);
+
+export const todoAddedFailed = createAction(
+  '[todos] todo added failed',
+  props<{ payload: TodoEntity, message: string }>()
+);
+
 export const loadTodos = createAction(
   '[todos] load todos'
 );

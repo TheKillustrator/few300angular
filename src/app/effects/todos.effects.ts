@@ -6,9 +6,23 @@ import * as actions from '../actions/todo.actions';
 import { switchMap, tap, map } from 'rxjs/operators';
 import { TodoEntity } from '../reducers/todos.reducer';
 
-
 @Injectable()
 export class TodosEffect {
+
+  // todoAdded -> save it at the api -> (todoAddedSucceeded | todoAddedFailed)
+  saveTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actions.todoAdded),
+      switchMap((originalAction) => this.client.post<TodoEntity>(environment.apiUrl + 'todos', {
+        name: originalAction.payload.name,
+        project: originalAction.payload.project,
+        dueDate: originalAction.payload.dueDate,
+        completed: originalAction.payload.completed
+      }).pipe(
+        map(response => actions.todoAddedSucceeded({ oldId: originalAction.payload.id, payload: response }))
+      ))
+    ), { dispatch: true }
+  );
 
   // loadTodos -> go to the api -> (loadTodosSucceeded | LoadTodosFailed)
   loadData$ = createEffect(() =>
