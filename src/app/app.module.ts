@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { TodosEffect } from './effects/todos.effects';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TodosEffect } from './effects/todos.effects';
     NavComponent,
     DashboardComponent,
     TodoListComponent,
-    TodoEntryComponent
+    TodoEntryComponent,
+    LoginComponent
   ],
   imports: [
     StoreModule.forRoot(reducers),
